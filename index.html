@@ -72,6 +72,46 @@
     .card .icon { font-size: 1.6rem; margin-bottom: 12px; display: block; }
     .card h3 { font-size: 1.05rem; margin-bottom: 8px; }
     .card p { font-size: 0.92rem; color: var(--muted); }
+    .cta-row {
+      display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+    .btn {
+      display: inline-block; padding: 13px 26px; border-radius: 10px;
+      font-weight: 700; font-size: 1rem; text-decoration: none;
+      transition: transform .1s ease;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary { background: var(--accent); color: white; }
+    .btn-ghost {
+      background: transparent; color: var(--text);
+      border: 1px solid #2e3d5c;
+    }
+    .cta-note { font-size: .85rem; color: var(--muted); }
+    .pasos {
+      padding: 8px 0 56px;
+    }
+    .pasos h2 { text-align: center; font-size: 1.5rem; margin-bottom: 28px; }
+    .pasos ol {
+      list-style: none; counter-reset: paso;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+    }
+    .pasos li {
+      counter-increment: paso;
+      background: var(--panel); border: 1px solid #233048;
+      border-radius: 14px; padding: 24px 20px;
+    }
+    .pasos li::before {
+      content: counter(paso);
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 30px; height: 30px; border-radius: 999px;
+      background: var(--accent-soft); color: #9cc0ff;
+      font-weight: 700; margin-bottom: 12px;
+    }
+    .pasos li b { display: block; margin-bottom: 6px; }
+    .pasos li span { font-size: .9rem; color: var(--muted); }
+    footer a { color: var(--muted); }
     footer {
       border-top: 1px solid #233048;
       padding: 24px 0;
@@ -91,13 +131,30 @@
   <main>
     <div class="container">
       <section class="hero">
-        <div class="badge">Próximamente · Chile</div>
+        <div class="badge">Beta privada · Chile</div>
         <h1>Buscar trabajo es un trabajo.<br><em>Deléganoslo.</em></h1>
         <p class="sub">
           Laborfy revisa los portales de empleo por ti, encuentra las ofertas que
           realmente calzan con tu perfil, adapta tu CV a cada una y te avisa al
           instante. Tú solo decides dónde postular.
         </p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://api.laborfy.cl/app/registro">Tengo una invitación</a>
+          <a class="btn btn-ghost" href="mailto:contacto@laborfy.cl?subject=Quiero%20probar%20Laborfy&body=Hola%2C%20quiero%20una%20invitaci%C3%B3n%20para%20la%20beta.%20Mi%20rubro%20es%3A%20">Pedir invitación</a>
+        </div>
+        <p class="cta-note">Cupos limitados durante la beta · gratis mientras dure</p>
+      </section>
+
+      <section class="pasos">
+        <h2>Cómo funciona</h2>
+        <ol>
+          <li><b>Regístrate y sube tu CV</b>
+            <span>Con tu código de invitación. Nuestra IA lee tu CV y arma tu perfil profesional en un minuto.</span></li>
+          <li><b>Conecta Telegram</b>
+            <span>Un toque y listo. Por ahí te llegan las ofertas — sin apps nuevas que instalar.</span></li>
+          <li><b>Recibe ofertas que calzan</b>
+            <span>Cada una con puntaje de afinidad y tu CV y carta ya adaptados en PDF. Tú decides dónde postular.</span></li>
+        </ol>
       </section>
 
       <section class="features">
@@ -127,7 +184,9 @@
 
   <footer>
     <div class="container">
-      © 2026 Laborfy · Hecho en Chile
+      © 2026 Laborfy · Hecho en Chile ·
+      <a href="https://api.laborfy.cl/app/entrar">Entrar</a> ·
+      <a href="mailto:contacto@laborfy.cl">contacto@laborfy.cl</a>
     </div>
   </footer>
 </body>
