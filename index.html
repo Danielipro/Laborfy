@@ -4,187 +4,131 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Laborfy — Tu copiloto de búsqueda de empleo</title>
-  <meta name="description" content="Laborfy busca empleo por ti: encuentra ofertas que calzan con tu perfil, adapta tu CV a cada una y te avisa al instante. Empieza gratis en Chile.">
+  <meta name="description" content="Sube tu CV una vez. Te llegan las ofertas que encajan con tu perfil, con tu CV y carta listos para postular. Empieza gratis.">
   <meta name="theme-color" content="#E8F1FB">
-  <meta property="og:title" content="Laborfy — Tu copiloto de búsqueda de empleo">
-  <meta property="og:description" content="Sube tu CV una vez. Buscamos, adaptamos y te avisamos. Tú solo decides dónde postular. Empieza gratis.">
+  <meta property="og:title" content="Laborfy — Buscar trabajo es un trabajo. Lo hacemos por ti.">
+  <meta property="og:description" content="Sube tu CV una vez. Te llegan las ofertas que encajan con tu perfil, con tu CV y carta listos. Empieza gratis.">
   <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     *{margin:0;padding:0;box-sizing:border-box}
     :root{
-      --bg:#E8F1FB; --surface:#FFFFFF; --line:#D8E4F1; --card:#FFFFFF;
-      --text:#14202E; --muted:#6B7C8E; --muted2:#9AAABC; --accent:#2E6BFF;
+      --bg:#E8F1FB; --surface:#FFFFFF; --ink:#0F1B2A; --text:#1C2A3A;
+      --muted:#5C6E81; --muted2:#92A2B4; --line:#DCE7F3; --line2:#EAF1F8;
+      --accent:#2E6BFF; --accent-d:#1d52d6; --mint:#13B581;
       --grad:linear-gradient(135deg,#2E6BFF 0%,#21B5FD 100%);
-      --grad-soft:linear-gradient(135deg,rgba(46,107,255,.12),rgba(33,181,253,.08));
+      --soft:rgba(46,107,255,.10);
+      --shadow-lg:0 2px 6px rgba(15,40,80,.05),0 26px 60px rgba(15,40,80,.13);
     }
-    body{
-      background:var(--bg);
-      color:var(--text);
+    body{background:var(--bg);color:var(--text);
       font-family:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;
-      line-height:1.6; min-height:100vh; display:flex; flex-direction:column;
-      -webkit-font-smoothing:antialiased;
-    }
-    .container{max-width:900px;margin:0 auto;padding:0 24px;width:100%}
+      line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+      min-height:100vh;display:flex;flex-direction:column}
+    .wrap{max-width:1020px;margin:0 auto;padding:0 28px;width:100%}
+    a{color:inherit;text-decoration:none}
+    .backdrop{position:fixed;inset:0;z-index:-1;
+      background:radial-gradient(820px 460px at 70% -12%,rgba(33,181,253,.14),transparent 60%),
+                 radial-gradient(680px 420px at 6% 0%,rgba(46,107,255,.10),transparent 60%),var(--bg)}
+
     header{padding:26px 0}
-    .head-row{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
     .logo{display:inline-flex;align-items:center;gap:11px}
-    .tile{width:34px;height:34px;border-radius:11px;background:var(--grad);display:grid;place-items:center;
-      font-family:'Fraunces';font-weight:600;color:#fff;font-size:20px;box-shadow:0 8px 20px rgba(46,107,255,.32)}
-    .logo .wm{font-family:'Fraunces';font-weight:600;font-size:1.45rem;letter-spacing:-.01em}
-    .logo .wm span{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-    .nav-entrar{font-weight:600;font-size:.92rem;color:var(--muted);text-decoration:none}
-    .nav-entrar:hover{color:var(--accent)}
-    main{flex:1}
-    .hero{padding:60px 0 44px;text-align:center}
-    .badge{display:inline-flex;align-items:center;gap:8px;background:var(--grad-soft);color:#1d5bd6;
-      font-size:.78rem;font-weight:700;padding:7px 16px;border-radius:999px;margin-bottom:26px;
-      letter-spacing:.04em;text-transform:uppercase;border:1px solid rgba(46,107,255,.2)}
-    .badge .pulse{width:7px;height:7px;border-radius:50%;background:var(--accent)}
-    h1{font-family:'Fraunces';font-weight:600;font-size:clamp(2.1rem,5.5vw,3.4rem);letter-spacing:-.015em;
-      line-height:1.1;margin-bottom:20px}
-    h1 em{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-    .sub{font-size:1.12rem;color:var(--muted);max-width:580px;margin:0 auto 34px}
-    .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:12px}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:14px;
-      font-family:inherit;font-weight:700;font-size:1rem;text-decoration:none;transition:transform .12s ease;cursor:pointer}
-    .btn:hover{transform:translateY(-2px)}
-    .btn-primary{background:var(--grad);color:#fff;box-shadow:0 12px 30px rgba(46,107,255,.3)}
-    .btn-ghost{background:var(--surface);color:var(--text);border:1px solid var(--line)}
-    .cta-note{font-size:.85rem;color:var(--muted2)}
-    .ico{stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;width:22px;height:22px}
-    .pasos{padding:8px 0 56px}
-    .pasos h2,.features h2,.planes-wrap h2{font-family:'Fraunces';font-weight:600;text-align:center;font-size:1.7rem;margin-bottom:30px}
-    .pasos ol{list-style:none;counter-reset:paso;display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
-    .pasos li{counter-increment:paso;background:var(--surface);border:1px solid var(--line);
-      border-radius:18px;padding:26px 22px;box-shadow:0 6px 20px rgba(20,50,90,.05)}
-    .pasos li::before{content:counter(paso);display:inline-flex;align-items:center;justify-content:center;
-      width:34px;height:34px;border-radius:11px;background:var(--grad);color:#fff;
-      font-family:'Fraunces';font-weight:600;font-size:1.05rem;margin-bottom:14px}
-    .pasos li b{display:block;font-size:1.05rem;margin-bottom:6px}
-    .pasos li span{font-size:.92rem;color:var(--muted)}
-    .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;padding:24px 0 64px}
-    .features.head{display:block;padding-top:0}
-    .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px 22px;box-shadow:0 6px 20px rgba(20,50,90,.05)}
-    .card .ic{width:44px;height:44px;border-radius:13px;background:var(--grad-soft);display:grid;place-items:center;
-      margin-bottom:14px;color:var(--accent)}
-    .card .ic .ico{width:24px;height:24px}
-    .card h3{font-family:'Fraunces';font-weight:600;font-size:1.1rem;margin-bottom:8px}
-    .card p{font-size:.92rem;color:var(--muted)}
-    /* Planes */
-    .planes-wrap{padding:8px 0 64px}
-    .planes{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;max-width:640px;margin:0 auto}
-    .plan{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:28px 24px;
-      box-shadow:0 6px 20px rgba(20,50,90,.05);display:flex;flex-direction:column}
-    .plan.featured{border:1.5px solid var(--accent);box-shadow:0 14px 36px rgba(46,107,255,.16)}
-    .plan-tag{font-family:'Fraunces';font-weight:600;font-size:1.15rem}
-    .plan .soon{font-family:'Plus Jakarta Sans';font-size:.66rem;font-weight:700;text-transform:uppercase;
-      letter-spacing:.05em;color:#1d5bd6;background:var(--grad-soft);border:1px solid rgba(46,107,255,.2);
-      padding:3px 8px;border-radius:999px;margin-left:6px;vertical-align:middle}
-    .price{font-family:'Fraunces';font-weight:600;font-size:2.1rem;margin:6px 0 14px;letter-spacing:-.01em}
-    .price small{font-size:.9rem;color:var(--muted);font-weight:400}
-    .plan ul{list-style:none;margin:0 0 20px;display:flex;flex-direction:column;gap:9px;flex:1}
-    .plan li{font-size:.93rem;color:var(--text);display:flex;gap:9px;align-items:flex-start}
-    .plan li::before{content:"";flex-shrink:0;width:18px;height:18px;margin-top:2px;border-radius:50%;
-      background:var(--grad-soft);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%232E6BFF' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
-      background-repeat:no-repeat;background-position:center}
-    .plan .btn{width:100%;justify-content:center}
-    footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;font-size:.85rem;color:var(--muted2);margin-top:8px}
-    footer a{color:var(--muted);text-decoration:none}
-    footer a:hover{color:var(--accent)}
-    footer .legal{margin-top:8px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+    .tile{width:36px;height:36px;border-radius:12px;background:var(--grad);display:grid;place-items:center;
+      font-family:'Fraunces';font-weight:600;color:#fff;font-size:21px;box-shadow:0 8px 18px rgba(46,107,255,.32)}
+    .logo b{font-family:'Fraunces';font-weight:600;font-size:1.5rem;letter-spacing:-.015em;color:var(--ink)}
+    .logo b span{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+    .nav .entrar{color:var(--muted);font-weight:600;font-size:.96rem;padding:9px 16px;border-radius:11px;border:1px solid var(--line);background:var(--surface)}
+    .nav .entrar:hover{color:var(--ink);border-color:#cdddee}
+
+    .btn{display:inline-flex;align-items:center;gap:9px;font-family:inherit;font-weight:700;font-size:1.02rem;
+      cursor:pointer;border:0;border-radius:13px;padding:15px 26px;transition:transform .14s ease,box-shadow .14s ease}
+    .btn-primary{background:var(--grad);color:#fff;box-shadow:0 12px 28px rgba(46,107,255,.28)}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 36px rgba(46,107,255,.34)}
+
+    main{flex:1;display:flex;align-items:center}
+    .hero{display:grid;grid-template-columns:1.04fr .96fr;gap:60px;align-items:center;
+      padding:40px 0 70px;width:100%}
+    h1{font-family:'Fraunces';font-weight:600;font-size:clamp(2.5rem,5vw,3.7rem);line-height:1.04;
+      letter-spacing:-.02em;color:var(--ink);margin-bottom:24px}
+    .lede{font-size:1.18rem;color:var(--muted);max-width:27rem;margin-bottom:34px}
+    .note{margin-top:20px;font-size:.86rem;color:var(--muted2)}
+    .note .ck{color:var(--mint);font-weight:700}
+
+    .stage{position:relative;justify-self:center;width:100%;max-width:374px}
+    .stage .ghost{position:absolute;inset:24px -16px auto auto;height:80px;width:86%;
+      background:var(--surface);border:1px solid var(--line2);border-radius:20px;
+      box-shadow:0 14px 30px rgba(15,40,80,.07);transform:rotate(3deg);opacity:.65}
+    .card{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:24px;box-shadow:var(--shadow-lg)}
+    .card-top{display:flex;align-items:center;justify-content:space-between;font-size:.8rem;color:var(--muted2);font-weight:600;margin-bottom:18px}
+    .card-top .new{display:inline-flex;align-items:center;gap:8px;color:var(--accent-d)}
+    .card-top .new svg{width:15px;height:15px}
+    .row{display:flex;gap:14px;align-items:center}
+    .ring{flex-shrink:0;width:58px;height:58px;border-radius:50%;background:conic-gradient(var(--accent) 94%,var(--line) 0);display:grid;place-items:center}
+    .ring i{width:46px;height:46px;border-radius:50%;background:var(--surface);display:grid;place-items:center;
+      font-family:'Fraunces';font-weight:600;font-size:.98rem;color:var(--ink);font-style:normal}
+    .role{font-weight:700;font-size:1.08rem;color:var(--ink);line-height:1.25}
+    .co{display:flex;align-items:center;gap:8px;margin-top:5px;color:var(--muted);font-size:.89rem;font-weight:500}
+    .co .mono{width:23px;height:23px;border-radius:7px;background:var(--soft);color:var(--accent-d);display:grid;place-items:center;font-size:.68rem;font-weight:800}
+    .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+    .chip{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;font-weight:600;padding:7px 12px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+    .chip.ok{color:var(--mint);border-color:rgba(19,181,129,.28);background:rgba(19,181,129,.07)}
+
+    footer{border-top:1px solid var(--line);padding:26px 0 44px;color:var(--muted2);font-size:.87rem}
+    .foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+    .foot a{color:var(--muted)}.foot a:hover{color:var(--accent)}
+    .foot .links{display:flex;gap:16px;flex-wrap:wrap}
+
+    @media(max-width:840px){
+      main{align-items:flex-start}
+      .hero{grid-template-columns:1fr;gap:44px;padding:24px 0 56px;text-align:center}
+      .lede{margin-left:auto;margin-right:auto}
+      .stage{order:-1;max-width:330px}
+    }
   </style>
 </head>
 <body>
+  <div class="backdrop"></div>
+
   <header>
-    <div class="container">
-      <div class="head-row">
-        <div class="logo"><div class="tile">L</div><div class="wm">Labor<span>fy</span></div></div>
-        <a class="nav-entrar" href="https://api.laborfy.cl/app/entrar">Entrar</a>
-      </div>
+    <div class="wrap nav">
+      <a class="logo" href="/"><span class="tile">L</span><b>Labor<span>fy</span></b></a>
+      <a class="entrar" href="https://api.laborfy.cl/app/entrar">Entrar</a>
     </div>
   </header>
 
   <main>
-    <div class="container">
+    <div class="wrap">
       <section class="hero">
-        <div class="badge"><span class="pulse"></span> Gratis para empezar · Chile</div>
-        <h1>Buscar trabajo es un trabajo.<br><em>Deléganoslo.</em></h1>
-        <p class="sub">
-          Laborfy revisa los portales de empleo por ti, encuentra las ofertas que
-          realmente calzan con tu perfil, adapta tu CV a cada una y te avisa al
-          instante. Tú solo decides dónde postular.
-        </p>
-        <div class="cta-row">
+        <div>
+          <h1>Buscar trabajo es un trabajo. Lo hacemos por ti.</h1>
+          <p class="lede">Sube tu CV una vez. Te llegan las ofertas que encajan con tu perfil, con tu CV y carta listos para postular.</p>
           <a class="btn btn-primary" href="https://api.laborfy.cl/app/registro">Crear cuenta gratis</a>
-          <a class="btn btn-ghost" href="https://api.laborfy.cl/app/entrar">Ya tengo cuenta</a>
+          <p class="note"><span class="ck">✓</span> Gratis para empezar · sin tarjeta</p>
         </div>
-        <p class="cta-note">Gratis para empezar · sin tarjeta de crédito</p>
-      </section>
 
-      <section class="pasos">
-        <h2>Cómo funciona</h2>
-        <ol>
-          <li><b>Crea tu cuenta y sube tu CV</b>
-            <span>Gratis, en un minuto. Leemos tu CV y armamos tu perfil profesional automáticamente.</span></li>
-          <li><b>Buscamos por ti, sin parar</b>
-            <span>Revisamos los portales todos los días y evaluamos cada oferta contra tu experiencia real.</span></li>
-          <li><b>Recibe las que calzan</b>
-            <span>Cada una con puntaje de afinidad y tu CV y carta ya adaptados en PDF. Tú decides dónde postular.</span></li>
-        </ol>
-      </section>
-
-      <section class="features head"><h2>Por qué Laborfy</h2></section>
-      <section class="features">
-        <div class="card">
-          <div class="ic"><svg class="ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></div>
-          <h3>Búsqueda continua</h3>
-          <p>Monitoreamos los principales portales de empleo todos los días, para que ninguna oferta que te sirva pase de largo.</p>
-        </div>
-        <div class="card">
-          <div class="ic"><svg class="ico" viewBox="0 0 24 24"><path d="M12 3l2.4 5 5.6.8-4 4 1 5.6L12 21l-5-2.6 1-5.6-4-4 5.6-.8z"/></svg></div>
-          <h3>Evaluación inteligente</h3>
-          <p>Cada oferta se compara contra tu experiencia real. Solo te llegan las que tienen sentido para ti, con un puntaje de afinidad.</p>
-        </div>
-        <div class="card">
-          <div class="ic"><svg class="ico" viewBox="0 0 24 24"><path d="M14 3v5h5M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M8 13h8M8 17h5"/></svg></div>
-          <h3>CV adaptado a cada oferta</h3>
-          <p>Generamos una versión de tu currículum y carta de presentación ajustada a cada postulación, en PDF profesional.</p>
-        </div>
-        <div class="card">
-          <div class="ic"><svg class="ico" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><path d="M12 3l7 4v5c0 5-3.5 7.5-7 9-3.5-1.5-7-4-7-9V7z"/></svg></div>
-          <h3>Pensado para filtros ATS</h3>
-          <p>Muchas empresas filtran CVs con software antes de que los vea una persona. Laborfy ofrece formatos legibles por estos sistemas, con las palabras clave que cada oferta espera.</p>
-        </div>
-      </section>
-
-      <section class="planes-wrap">
-        <h2>Planes</h2>
-        <div class="planes">
-          <div class="plan featured">
-            <div class="plan-tag">Gratis</div>
-            <div class="price">$0</div>
-            <ul>
-              <li>Hasta 5 ofertas nuevas por día</li>
-              <li>CV y carta adaptados a cada oferta</li>
-              <li>Tu app con feed, avisos y seguimiento</li>
-              <li>Fuentes de empleo verificadas</li>
-            </ul>
-            <a class="btn btn-primary" href="https://api.laborfy.cl/app/registro">Crear cuenta gratis</a>
-          </div>
-          <div class="plan">
-            <div class="plan-tag">Pro <span class="soon">pronto</span></div>
-            <div class="price">—</div>
-            <ul>
-              <li>Ofertas sin límite diario</li>
-              <li>Prioridad de procesamiento</li>
-              <li>Más formatos de CV</li>
-              <li>Todo lo del plan Gratis</li>
-            </ul>
-            <a class="btn btn-ghost" href="https://api.laborfy.cl/app/registro">Empieza gratis hoy</a>
+        <div class="stage">
+          <div class="ghost"></div>
+          <div class="card">
+            <div class="card-top">
+              <span class="new">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>
+                Nueva oferta para ti
+              </span>
+              <span>hace 2 min</span>
+            </div>
+            <div class="row">
+              <div class="ring"><i>94%</i></div>
+              <div>
+                <div class="role">Ingeniero Eléctrico de Proyectos</div>
+                <div class="co"><span class="mono">VI</span> Vértice Ingeniería · Santiago</div>
+              </div>
+            </div>
+            <div class="chips">
+              <span class="chip ok">CV adaptado</span>
+              <span class="chip ok">Carta lista</span>
+            </div>
           </div>
         </div>
       </section>
@@ -192,13 +136,13 @@
   </main>
 
   <footer>
-    <div class="container">
-      © 2026 Laborfy · Hecho en Chile ·
-      <a href="https://api.laborfy.cl/app/entrar">Entrar</a> ·
-      <a href="mailto:contacto@laborfy.cl">contacto@laborfy.cl</a>
-      <div class="legal">
-        <a href="https://laborfy.cl/privacidad.html">Política de privacidad</a> ·
-        <a href="https://laborfy.cl/terminos.html">Términos y condiciones</a>
+    <div class="wrap foot">
+      <div>© 2026 Laborfy · Hecho en Chile</div>
+      <div class="links">
+        <a href="https://api.laborfy.cl/app/entrar">Entrar</a>
+        <a href="mailto:contacto@laborfy.cl">contacto@laborfy.cl</a>
+        <a href="https://laborfy.cl/privacidad.html">Privacidad</a>
+        <a href="https://laborfy.cl/terminos.html">Términos</a>
       </div>
     </div>
   </footer>
