@@ -30,7 +30,7 @@
       font-family:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;
       line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;
       min-height:100vh;display:flex;flex-direction:column}
-    .wrap{max-width:1020px;margin:0 auto;padding:0 28px;width:100%}
+    .wrap{max-width:1140px;margin:0 auto;padding:0 28px;width:100%}
     a{color:inherit;text-decoration:none}
     .backdrop{position:fixed;inset:0;z-index:-1;
       background:radial-gradient(820px 460px at 70% -12%,rgba(33,181,253,.14),transparent 60%),
@@ -89,6 +89,27 @@
       .hero{grid-template-columns:1fr;gap:44px;padding:24px 0 56px;text-align:center}
       .lede{margin-left:auto;margin-right:auto}
       .stage{order:-1;max-width:330px}
+    }
+
+    /* Monitores grandes: que el hero llene la pantalla, no un bloque al medio */
+    @media(min-width:1500px){
+      .wrap{max-width:1300px}
+      .hero{gap:96px;padding:56px 0 90px}
+      h1{font-size:4.35rem}
+      .lede{font-size:1.28rem;max-width:31rem}
+      .btn{font-size:1.08rem;padding:17px 30px}
+      .note{font-size:.92rem}
+      .stage{max-width:460px}
+      .card{padding:30px;border-radius:26px}
+      .card-top{font-size:.88rem}
+      .ring{width:68px;height:68px}
+      .ring i{width:54px;height:54px;font-size:1.1rem}
+      .role{font-size:1.24rem}
+      .co{font-size:.98rem}
+      .chip{font-size:.88rem;padding:8px 14px}
+      .tile{width:40px;height:40px;font-size:23px}
+      .logo b{font-size:1.62rem}
+      footer{font-size:.93rem}
     }
   </style>
   <!-- Cloudflare Web Analytics (cookieless, sin datos personales) -->
