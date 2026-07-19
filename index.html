@@ -65,11 +65,20 @@
     .note{margin-top:20px;font-size:.86rem;color:rgba(170,210,240,.75)}
     .note .ck{color:#4FE3B2;font-weight:700}
 
-    .stage{position:relative;justify-self:center;width:100%;max-width:374px}
-    .stage .ghost{position:absolute;inset:24px -16px auto auto;height:80px;width:86%;
-      background:rgba(255,255,255,.12);border:1px solid rgba(180,220,255,.25);border-radius:20px;
-      transform:rotate(3deg)}
-    .card{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:24px;box-shadow:var(--shadow-lg)}
+    .stage{position:relative;justify-self:center;width:100%;max-width:470px;height:440px}
+    .deck3{position:absolute;top:38px;left:50%;transform:translateX(-50%) rotate(-7deg);width:86%;
+      background:#DDE8F5;border-radius:22px;padding:24px;box-shadow:0 14px 34px rgba(0,10,40,.35)}
+    .deck2{position:absolute;top:16px;left:50%;transform:translateX(-50%) rotate(4.5deg);width:93%;
+      background:#EDF4FC;border-radius:24px;padding:26px;box-shadow:0 20px 44px rgba(0,10,40,.4)}
+    .d2top{display:flex;justify-content:space-between;font-size:.85rem;color:#8FA5BC;font-weight:600;margin-bottom:14px}
+    .sk{border-radius:7px}
+    .ska{height:17px;width:70%;background:#C4D4E6;margin-bottom:10px}
+    .skb{height:12px;width:50%;background:#D3E0EE}
+    .skc{height:12px;width:45%;background:#B9CBE0;margin-bottom:13px}
+    .skd{height:17px;width:75%;background:#A9BDD6;margin-bottom:9px}
+    .ske{height:12px;width:55%;background:#B9CBE0}
+    .card{position:absolute;top:82px;left:50%;transform:translateX(-50%) rotate(-1.5deg);width:100%;
+      background:var(--surface);border:1px solid var(--line);border-radius:26px;padding:28px;box-shadow:var(--shadow-lg)}
     .card-top{display:flex;align-items:center;justify-content:space-between;font-size:.8rem;color:var(--muted2);font-weight:600;margin-bottom:18px}
     .card-top .new{display:inline-flex;align-items:center;gap:8px;color:var(--accent-d)}
     .card-top .new svg{width:15px;height:15px}
@@ -93,7 +102,7 @@
       main{align-items:flex-start}
       .hero{grid-template-columns:1fr;gap:44px;padding:24px 0 56px;text-align:center}
       .lede{margin-left:auto;margin-right:auto}
-      .stage{order:-1;max-width:330px}
+      .stage{order:-1;max-width:330px;height:390px}
     }
 
     /* Monitores grandes: que el hero llene la pantalla, no un bloque al medio */
@@ -104,7 +113,7 @@
       .lede{font-size:1.28rem;max-width:31rem}
       .btn{font-size:1.08rem;padding:17px 30px}
       .note{font-size:.92rem}
-      .stage{max-width:460px}
+      .stage{max-width:560px;height:520px}
       .card{padding:30px;border-radius:26px}
       .card-top{font-size:.88rem}
       .ring{width:68px;height:68px}
@@ -154,7 +163,16 @@
         </div>
 
         <div class="stage">
-          <div class="ghost"></div>
+          <div class="deck3">
+            <div class="sk skc"></div>
+            <div class="sk skd"></div>
+            <div class="sk ske"></div>
+          </div>
+          <div class="deck2">
+            <div class="d2top"><span>Nueva oferta para ti</span><span>hace 1 h</span></div>
+            <div class="sk ska"></div>
+            <div class="sk skb"></div>
+          </div>
           <div class="card">
             <div class="card-top">
               <span class="new">
@@ -166,8 +184,8 @@
             <div class="row">
               <div class="ring"><i>94%</i></div>
               <div>
-                <div class="role">Ingeniero Eléctrico de Proyectos</div>
-                <div class="co"><span class="mono">VI</span> Vértice Ingeniería · Santiago</div>
+                <div class="role">Analista de Datos</div>
+                <div class="co"><span class="mono">B</span> Importante banco · Santiago</div>
               </div>
             </div>
             <div class="chips">
