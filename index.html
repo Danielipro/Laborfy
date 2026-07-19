@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Laborfy — Tu copiloto de búsqueda de empleo</title>
   <meta name="description" content="Sube tu CV una vez. Te llegan las ofertas que encajan con tu perfil, con tu CV y carta listos para postular. Empieza gratis.">
-  <meta name="theme-color" content="#E8F1FB">
+  <meta name="theme-color" content="#0B1F4B">
   <meta property="og:title" content="Laborfy — Buscar trabajo es un trabajo. Lo hacemos por ti.">
   <meta property="og:description" content="Sube tu CV una vez. Te llegan las ofertas que encajan con tu perfil, con tu CV y carta listos. Empieza gratis.">
   <meta property="og:type" content="website">
@@ -19,12 +19,12 @@
   <style>
     *{margin:0;padding:0;box-sizing:border-box}
     :root{
-      --bg:#E8F1FB; --surface:#FFFFFF; --ink:#0F1B2A; --text:#1C2A3A;
+      --bg:#0E2A5E; --surface:#FFFFFF; --ink:#0F1B2A; --text:#1C2A3A;
       --muted:#5C6E81; --muted2:#92A2B4; --line:#DCE7F3; --line2:#EAF1F8;
       --accent:#2E6BFF; --accent-d:#1d52d6; --mint:#13B581;
       --grad:linear-gradient(135deg,#2E6BFF 0%,#21B5FD 100%);
       --soft:rgba(46,107,255,.10);
-      --shadow-lg:0 2px 6px rgba(15,40,80,.05),0 26px 60px rgba(15,40,80,.13);
+      --shadow-lg:0 3px 8px rgba(0,10,40,.3),0 26px 60px rgba(0,10,40,.5);
     }
     body{background:var(--bg);color:var(--text);
       font-family:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;
@@ -33,43 +33,48 @@
     .wrap{max-width:1140px;margin:0 auto;padding:0 28px;width:100%}
     a{color:inherit;text-decoration:none}
     .backdrop{position:fixed;inset:0;z-index:-1;
-      background:radial-gradient(820px 460px at 70% -12%,rgba(33,181,253,.14),transparent 60%),
-                 radial-gradient(680px 420px at 6% 0%,rgba(46,107,255,.10),transparent 60%),var(--bg)}
+      background:radial-gradient(1000px 700px at 78% 20%,rgba(33,212,253,.14),transparent 60%),
+                 radial-gradient(700px 500px at 8% 100%,rgba(46,107,255,.25),transparent 60%),
+                 linear-gradient(160deg,#0B1F4B 0%,#123468 55%,#0E2A5E 100%)}
+    .sky{position:fixed;inset:0;z-index:-1;opacity:.5;pointer-events:none}
+    .sky svg{width:100%;height:100%}
 
     header{padding:26px 0}
     .nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
     .logo{display:inline-flex;align-items:center;gap:11px}
     .tile{width:36px;height:36px;border-radius:12px;background:var(--grad);display:grid;place-items:center;
-      font-family:'Fraunces';font-weight:600;color:#fff;font-size:21px;box-shadow:0 8px 18px rgba(46,107,255,.32)}
-    .logo b{font-family:'Fraunces';font-weight:600;font-size:1.5rem;letter-spacing:-.015em;color:var(--ink)}
-    .logo b span{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-    .nav .entrar{color:var(--muted);font-weight:600;font-size:.96rem;padding:9px 16px;border-radius:11px;border:1px solid var(--line);background:var(--surface)}
-    .nav .entrar:hover{color:var(--ink);border-color:#cdddee}
+      font-family:'Fraunces';font-weight:600;color:#fff;font-size:21px;
+      border:1px solid rgba(255,255,255,.4);box-shadow:0 8px 20px rgba(0,10,40,.5)}
+    .logo b{font-family:'Fraunces';font-weight:600;font-size:1.5rem;letter-spacing:-.015em;color:#fff}
+    .logo b span{color:#7BD1FF}
+    .nav .entrar{color:#fff;font-weight:600;font-size:.96rem;padding:9px 16px;border-radius:11px;
+      border:1px solid rgba(180,220,255,.4);background:rgba(255,255,255,.1)}
+    .nav .entrar:hover{color:#fff;border-color:rgba(200,235,255,.6);background:rgba(255,255,255,.16)}
 
     .btn{display:inline-flex;align-items:center;gap:9px;font-family:inherit;font-weight:700;font-size:1.02rem;
       cursor:pointer;border:0;border-radius:13px;padding:15px 26px;transition:transform .14s ease,box-shadow .14s ease}
-    .btn-primary{background:var(--grad);color:#fff;box-shadow:0 12px 28px rgba(46,107,255,.28)}
-    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 36px rgba(46,107,255,.34)}
+    .btn-primary{background:linear-gradient(90deg,#1FC8A9,#21D4FD);color:#062A50;box-shadow:0 12px 32px rgba(20,180,200,.4)}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 40px rgba(20,180,200,.5)}
 
     main{flex:1;display:flex;align-items:center}
     .hero{display:grid;grid-template-columns:1.04fr .96fr;gap:60px;align-items:center;
       padding:40px 0 70px;width:100%}
     h1{font-family:'Fraunces';font-weight:600;font-size:clamp(2.5rem,5vw,3.7rem);line-height:1.04;
-      letter-spacing:-.02em;color:var(--ink);margin-bottom:24px}
-    .lede{font-size:1.18rem;color:var(--muted);max-width:27rem;margin-bottom:34px}
-    .note{margin-top:20px;font-size:.86rem;color:var(--muted2)}
-    .note .ck{color:var(--mint);font-weight:700}
+      letter-spacing:-.02em;color:#fff;margin-bottom:24px}
+    .lede{font-size:1.18rem;color:rgba(200,225,255,.85);max-width:27rem;margin-bottom:34px}
+    .note{margin-top:20px;font-size:.86rem;color:rgba(170,210,240,.75)}
+    .note .ck{color:#4FE3B2;font-weight:700}
 
     .stage{position:relative;justify-self:center;width:100%;max-width:374px}
     .stage .ghost{position:absolute;inset:24px -16px auto auto;height:80px;width:86%;
-      background:var(--surface);border:1px solid var(--line2);border-radius:20px;
-      box-shadow:0 14px 30px rgba(15,40,80,.07);transform:rotate(3deg);opacity:.65}
+      background:rgba(255,255,255,.12);border:1px solid rgba(180,220,255,.25);border-radius:20px;
+      transform:rotate(3deg)}
     .card{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:24px;box-shadow:var(--shadow-lg)}
     .card-top{display:flex;align-items:center;justify-content:space-between;font-size:.8rem;color:var(--muted2);font-weight:600;margin-bottom:18px}
     .card-top .new{display:inline-flex;align-items:center;gap:8px;color:var(--accent-d)}
     .card-top .new svg{width:15px;height:15px}
     .row{display:flex;gap:14px;align-items:center}
-    .ring{flex-shrink:0;width:58px;height:58px;border-radius:50%;background:conic-gradient(var(--accent) 94%,var(--line) 0);display:grid;place-items:center}
+    .ring{flex-shrink:0;width:58px;height:58px;border-radius:50%;background:conic-gradient(#16B981 94%,var(--line) 0);display:grid;place-items:center}
     .ring i{width:46px;height:46px;border-radius:50%;background:var(--surface);display:grid;place-items:center;
       font-family:'Fraunces';font-weight:600;font-size:.98rem;color:var(--ink);font-style:normal}
     .role{font-weight:700;font-size:1.08rem;color:var(--ink);line-height:1.25}
@@ -79,9 +84,9 @@
     .chip{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;font-weight:600;padding:7px 12px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
     .chip.ok{color:var(--mint);border-color:rgba(19,181,129,.28);background:rgba(19,181,129,.07)}
 
-    footer{border-top:1px solid var(--line);padding:26px 0 44px;color:var(--muted2);font-size:.87rem}
+    footer{border-top:1px solid rgba(150,200,255,.2);padding:26px 0 44px;color:rgba(170,210,240,.7);font-size:.87rem}
     .foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
-    .foot a{color:var(--muted)}.foot a:hover{color:var(--accent)}
+    .foot a{color:rgba(170,210,240,.85)}.foot a:hover{color:#4FE3B2}
     .foot .links{display:flex;gap:16px;flex-wrap:wrap}
 
     @media(max-width:840px){
@@ -118,6 +123,18 @@
 </head>
 <body>
   <div class="backdrop"></div>
+  <div class="sky" aria-hidden="true"><svg viewBox="0 0 1880 830" preserveAspectRatio="xMidYMid slice">
+    <g stroke="rgba(140,200,255,.35)" stroke-width="1.2">
+      <line x1="1250" y1="130" x2="1470" y2="230"/><line x1="1470" y1="230" x2="1690" y2="150"/>
+      <line x1="180" y1="620" x2="380" y2="720"/><line x1="90" y1="200" x2="260" y2="120"/>
+    </g>
+    <g fill="#9FD8FF">
+      <circle cx="1250" cy="130" r="4"/><circle cx="1470" cy="230" r="5"/><circle cx="1690" cy="150" r="3.5"/>
+      <circle cx="180" cy="620" r="3.5"/><circle cx="380" cy="720" r="3"/><circle cx="90" cy="200" r="3.5"/>
+      <circle cx="260" cy="120" r="3"/><circle cx="700" cy="90" r="2.5"/><circle cx="1800" cy="600" r="2.5"/>
+      <circle cx="960" cy="760" r="2.5"/>
+    </g>
+  </svg></div>
 
   <header>
     <div class="wrap nav">
